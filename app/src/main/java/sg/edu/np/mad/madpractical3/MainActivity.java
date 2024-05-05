@@ -26,13 +26,17 @@ public class MainActivity extends AppCompatActivity {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+
+            User user = new User("John Doe", "MAD Development", 1,  false);
+
+            TextView name = findViewById(R.id.textView2);
+            int id = new Random().nextInt(999999);
+            String username = new String(user.name);
+            name.setText(username + String.valueOf(id));
+
             return insets;
         });
 
-        TextView name = findViewById(R.id.textView2);
-        int id = new Random().nextInt(999999);
-
-        name.setText("MAD " + String.valueOf(id));
 
         Button follow = findViewById(R.id.button);
         follow.setOnClickListener(new View.OnClickListener() {
